@@ -1,0 +1,7 @@
+imageinfo-lib.js - a librarized version of imageinfo.js
+by WATANABE Hiroaki, <https://github.com/hiroaki/>.
+
+The original is "ImageInfo 0.1.2" - A JavaScript library for reading image metadata
+by Jacob Seidelin, <http://blog.nihilogic.dk/>
+
+Each are under the MIT License <http://www.nihilogic.dk/licenses/mit-license.txt>

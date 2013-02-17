@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xml:lang="ja" lang="ja"><head> 
+<meta http-equiv="content-type" content="text/html; charset=utf-8" /> 
+<meta http-equiv="content-script-type" content="text/javascript" /> 
+<meta http-equiv="content-style-type" content="text/css" /> 
+<title>parse image and extract meta data</title> 
+<script type="text/javascript" src="jquery-1.3.2.min.js"></script>
+<script type="text/javascript" src="binaryajax-lib.js"></script>
+<script type="text/javascript" src="imageinfo-lib.js"></script>
+<script type="text/javascript" src="exif.js"></script>
+<script type="text/javascript">
+
+$(document).ready(function(){
+    $('img').each(function (i,v){
+        new ImageInfo(
+            $(this).attr('src'),
+            (function (element){
+                return function (imageinfo){
+                    function dumper (shelf, hash, indent){
+                        for( var i in hash ){
+                            shelf.push(indent + i +': '+ hash[i]);
+                            if( hash[i] instanceof Object ){
+                                dumper(shelf, hash[i], indent+'  ');
+                            }
+                        }
+                        return shelf;
+                    }
+                    $(element).after('<pre>'+ dumper([], imageinfo.getAllFields(), '').join('\n') +'</pre>');
+                };
+            })(this)
+        ).readFileData();
+    });
+
+});
+
+</script>
+</head><body>
+    <div><img src="sample.jpg" /></div>
+</body></html>

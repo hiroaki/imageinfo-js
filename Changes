@@ -1,0 +1,16 @@
+Changes:
+
+
+2013-02-10  v0.1.2
+  - Fork from "ImageInfo 0.1.2" by Jacob Seidelin.
+  - Patch the previous changes for librarized.
+  - Rename because API changed by librarized.
+
+----------
+
+2009-02-16
+  - rewrote all code as class.
+  - redefined readJPEGInfo() because there was a case where it could not take the size.
+
+2009-02-26
+  - repaired that readFileData() was not called when initializing.
